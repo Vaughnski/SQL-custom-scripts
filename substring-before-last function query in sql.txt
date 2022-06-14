@@ -1,0 +1,9 @@
+/****** Andrew Vaughn 5.8.22  ******/
+/****** This query was used to find unique file directories in a table of over 100 million records. The query ran in about 7 seconds. ******/
+/****** This modified substring function works just like a substring-before-last function works in java. It will return unique values for column name before the last charector in the string****/
+/****** Column name is the column you want to find unique values for. The '\' can be replaced with a '.' or any other charector. ******/
+/****** Example of use: listing unique directories from a DB of files.  ******/
+
+
+SELECT distinct SUBSTRING(<<column name>>, 1, (len(<<column name>>) - CHARINDEX('\',REVERSE(<<column name>>), 0)))
+ FROM <<tableName>> WITH (NOLOCK) 
